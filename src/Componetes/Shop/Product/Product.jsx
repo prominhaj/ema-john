@@ -16,7 +16,7 @@ const Product = (props) => {
                     <p className='text-slate-700 text-md font-normal'>Stock: {stock}</p>
                 </div>
             </div>
-            <button className='flex items-center justify-center gap-3 w-full h-12 bg-orange-200 rounded-bl-lg rounded-br-lg border border-gray-400 absolute bottom-0'>Add to Cart
+            <button onClick={()=> props.addToCart(props.card)} className='flex items-center justify-center gap-3 w-full h-12 bg-orange-200 rounded-bl-lg rounded-br-lg border absolute bottom-0'>Add to Cart
                 <img src={AddToCartLogo} alt="" />
             </button>
         </div>

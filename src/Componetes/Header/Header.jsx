@@ -1,8 +1,8 @@
 import logo from '../../assets/images/Logo.svg'
 const Header = () => {
     return (
-        <header className='bg-[#1C2B35]'>
-            <nav className='flex items-center justify-between w-[85%] mx-auto py-[1.2rem]'>
+        <header className='bg-[#1C2B35] z-10 sticky top-0 left-0 right-0'>
+            <nav className='flex container items-center justify-between mx-auto py-[1.2rem]'>
                 <div>
                     <img src={logo} alt="" />
                 </div>

@@ -1,19 +1,28 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import Order from '../Shop/Order';
 import ReviewProduct from '../Review/ReviewProduct';
+import { removeFromDb } from '../../utilities/fakedb';
 
 const Orders = () => {
     const data = useLoaderData();
+    const [product, setProduct] = useState(data);
+
+    const delateProduct = (id) =>{
+        const remeaning = product.filter(pd => pd.id !== id);
+        setProduct(remeaning);
+        removeFromDb(id);
+    }
+
     return (
         <div className='grid md:grid-cols-3 gap-40 my-20'>
             <div className='col-span-2 flex flex-col gap-[25px]'>
                 {
-                    data.map(product => <ReviewProduct key={product.id} product={product}></ReviewProduct>)
+                    product.map(product => <ReviewProduct key={product.id} product={product} delateProduct={delateProduct}></ReviewProduct>)
                 }
             </div>
             <div className=' bg-[#FF99004D] h-[600px] rounded-lg sticky top-0'>
-                <Order productCart={data}></Order>
+                <Order productCart={product}></Order>
             </div>
         </div>
     );

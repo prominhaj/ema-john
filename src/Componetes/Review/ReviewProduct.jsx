@@ -1,7 +1,7 @@
 import React from 'react';
 import TrashAlt from '../../assets/images/trash-alt.svg';
 
-const ReviewProduct = ({product}) => {
+const ReviewProduct = ({product, delateProduct}) => {
     const {img, name, price, quantity, id} = product;
     return (
         <div className='h-[120px] p-[8px] rounded-lg border border-gray-400 flex items-start gap-5'>
@@ -14,7 +14,7 @@ const ReviewProduct = ({product}) => {
                     <p className='text-gray-800 text-[15px] font-normal font-[Lato] tracking-tight'>Price: <span className='text-amber-500'>${price}</span></p>
                     <p className='text-gray-800 text-[15px] font-normal font-[Lato] tracking-tight'>Quantity: <span className='text-amber-500'>{quantity}</span></p>
                 </div>
-                <button className='w-[55px] h-[55px] bg-rose-500 bg-opacity-30 rounded-full flex justify-center items-center'><img src={TrashAlt} alt="" /></button>
+                <button onClick={() => delateProduct(id)} className='w-[55px] h-[55px] bg-rose-500 bg-opacity-30 rounded-full flex justify-center items-center'><img src={TrashAlt} alt="" /></button>
             </div>
         </div>
     );

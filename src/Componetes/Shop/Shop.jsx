@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import Product from "./Product/Product";
 import Order from "./Order";
-import { addToDb, getShoppingCart } from "../../utilities/fakedb";
+import { addToDb, deleteShoppingCart, getShoppingCart } from "../../utilities/fakedb";
 
 const Shop = () => {
     const [products, setProducts] = useState([]);
@@ -49,6 +49,7 @@ const Shop = () => {
 
     const clearCart = ()=>{
         setProductCart([]);
+        deleteShoppingCart();
     }
 
     return (

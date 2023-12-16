@@ -7,9 +7,6 @@ const Order = ({productCart, clearCart}) => {
     let quantity = 0;
 
     for(const product of productCart){
-        // if(product.quantity === 0){
-        //     product.quantity = 1;
-        // }
         totalPrice = totalPrice + product.price * product.quantity;
         shippingCost = shippingCost + product.shipping;
         quantity = quantity + product.quantity;

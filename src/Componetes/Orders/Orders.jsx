@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 import Order from '../Shop/Order';
 import ReviewProduct from '../Review/ReviewProduct';
 import { deleteShoppingCart, removeFromDb } from '../../utilities/fakedb';
+import CardImg from '../../assets/images/credit-card.svg';
 
 const Orders = () => {
     const data = useLoaderData();
@@ -27,7 +28,13 @@ const Orders = () => {
                 }
             </div>
             <div className=' bg-[#FF99004D] h-[600px] rounded-lg sticky top-0'>
-                <Order productCart={product} clearCart={clearCart}></Order>
+                <Order productCart={product} clearCart={clearCart}>
+                    <Link to="/checkout">
+                        <button className='flex items-center gap-3 justify-center w-full h-12 bg-[#FF9900] rounded text-white mt-5'>Proceed Checkout
+                            <img src={CardImg} alt="" />
+                        </button>
+                    </Link>
+                </Order>
             </div>
         </div>
     );

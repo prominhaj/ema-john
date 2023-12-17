@@ -1,7 +1,6 @@
 import DeleteImg from '../../assets/images/Vector.svg';
-import ArrowImg from '../../assets/images/Arrow.svg';
 
-const Order = ({productCart, clearCart}) => {
+const Order = ({productCart, clearCart, children}) => {
     let totalPrice = 0;
     let shippingCost = 0;
     let quantity = 0;
@@ -29,9 +28,7 @@ const Order = ({productCart, clearCart}) => {
                 Clear Cart 
                 <img src={DeleteImg} alt="" />
             </button>
-            <button className='flex items-center gap-3 justify-center w-full h-12 bg-[#FF9900] rounded text-white mt-5'>Review Order
-                <img src={ArrowImg} alt="" />
-            </button>
+            {children}
         </div>
     );
 };

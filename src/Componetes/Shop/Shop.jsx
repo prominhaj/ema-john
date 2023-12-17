@@ -3,6 +3,8 @@ import { useState } from "react";
 import Product from "./Product/Product";
 import Order from "./Order";
 import { addToDb, deleteShoppingCart, getShoppingCart } from "../../utilities/fakedb";
+import { Link } from "react-router-dom";
+import ArrowImg from '../../assets/images/Arrow.svg';
 
 const Shop = () => {
     const [products, setProducts] = useState([]);
@@ -60,7 +62,13 @@ const Shop = () => {
             }
             </div>
             <div className="w-[25rem] h-screen bg-[#FF99004D] fixed right-0">
-                <Order productCart={productCart} clearCart={clearCart}></Order>
+                <Order productCart={productCart} clearCart={clearCart}>
+                    <Link to="/orders">
+                        <button className='flex items-center gap-3 justify-center w-full h-12 bg-[#FF9900] rounded text-white mt-5'>Review Order
+                            <img src={ArrowImg} alt="" />
+                        </button>
+                    </Link>
+                </Order>
             </div>
         </div>
     );

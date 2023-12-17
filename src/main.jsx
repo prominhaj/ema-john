@@ -13,6 +13,7 @@ import Login from './Componetes/Login/Login.jsx';
 import Error from './Componetes/Error/Error.jsx';
 import Shop from './Componetes/Shop/Shop.jsx';
 import loderDataState from './Componetes/LoderDataState/LoderData.js';
+import CheckOut from './Componetes/CheckOut/CheckOut.jsx';
 
 const router = createBrowserRouter([
   {
@@ -35,6 +36,10 @@ const router = createBrowserRouter([
       {
         path: 'login',
         element: <Login></Login>
+      },
+      {
+        path: 'checkout',
+        element: <CheckOut></CheckOut>
       },
       {
         path: '*',

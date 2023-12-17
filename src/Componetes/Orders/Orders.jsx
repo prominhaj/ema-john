@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import Order from '../Shop/Order';
 import ReviewProduct from '../Review/ReviewProduct';
-import { removeFromDb } from '../../utilities/fakedb';
+import { deleteShoppingCart, removeFromDb } from '../../utilities/fakedb';
 
 const Orders = () => {
     const data = useLoaderData();
@@ -14,6 +14,11 @@ const Orders = () => {
         removeFromDb(id);
     }
 
+    const clearCart = () =>{
+        setProduct([]);
+        deleteShoppingCart();
+    }
+
     return (
         <div className='grid md:grid-cols-3 gap-40 my-20'>
             <div className='col-span-2 flex flex-col gap-[25px]'>
@@ -22,7 +27,7 @@ const Orders = () => {
                 }
             </div>
             <div className=' bg-[#FF99004D] h-[600px] rounded-lg sticky top-0'>
-                <Order productCart={product}></Order>
+                <Order productCart={product} clearCart={clearCart}></Order>
             </div>
         </div>
     );

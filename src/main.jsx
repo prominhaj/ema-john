@@ -14,6 +14,7 @@ import Error from './Componetes/Error/Error.jsx';
 import Shop from './Componetes/Shop/Shop.jsx';
 import loderDataState from './Componetes/LoderDataState/LoderData.js';
 import CheckOut from './Componetes/CheckOut/CheckOut.jsx';
+import Register from './Componetes/Register/Register.jsx';
 
 const router = createBrowserRouter([
   {
@@ -40,6 +41,10 @@ const router = createBrowserRouter([
       {
         path: 'checkout',
         element: <CheckOut></CheckOut>
+      },
+      {
+        path: 'register',
+        element: <Register></Register>
       },
       {
         path: '*',

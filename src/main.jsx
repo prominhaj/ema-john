@@ -15,6 +15,7 @@ import Shop from './Componetes/Shop/Shop.jsx';
 import loderDataState from './Componetes/LoderDataState/LoderData.js';
 import CheckOut from './Componetes/CheckOut/CheckOut.jsx';
 import Register from './Componetes/Register/Register.jsx';
+import AuthContext from './Auth_Context/AuthContext.jsx';
 
 const router = createBrowserRouter([
   {
@@ -56,6 +57,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <AuthContext>
+      <RouterProvider router={router} />
+    </AuthContext>
   </React.StrictMode>,
 )

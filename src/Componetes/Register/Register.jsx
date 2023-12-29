@@ -6,7 +6,7 @@ import { userContext } from '../../Auth_Context/AuthContext';
 
 const Register = () => {
     // Context
-    const {authSingUp, setUser, authGoogleHandle, user} = useContext(userContext);
+    const {authSingUp, setUser, authGoogleHandle, authEmailVerification, user} = useContext(userContext);
 
     // Toast
     const success = (success) => toast.success(success);
@@ -39,6 +39,10 @@ const Register = () => {
             error(errors.message.substr(10))
         })
 
+        authEmailVerification()
+        .then(() => {
+            success('Email Verification Sent !')
+        })
     }
 
     // Google Auth Handle

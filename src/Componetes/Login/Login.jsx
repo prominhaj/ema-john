@@ -1,11 +1,12 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import GoogleImg from '../../assets/images/google.svg';
 import { userContext } from '../../Auth_Context/AuthContext';
 import toast from 'react-hot-toast';
 
 const Login = () => {
     const {authSingIn, authGoogleHandle} = useContext(userContext);
+    const navigate = useNavigate();
 
     // Toast
     const success = (success) => toast.success(success);
@@ -22,6 +23,8 @@ const Login = () => {
         authSingIn(email, password)
         .then(result => {
             success('SuccessFull Login')
+            form.reset();
+            navigate('/')
         })
         .catch(errors => {
             error(errors.message.substr(10))
@@ -32,8 +35,8 @@ const Login = () => {
     const googleHandle = () => {
         authGoogleHandle()
         .then(result => {
-            success('Register SuccessFull')
-            setUser(result.user)
+            success('Login SuccessFull')
+            navigate('/')
         })
         .catch(errors => {
             error(errors.message.substr(10))

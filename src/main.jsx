@@ -16,6 +16,7 @@ import loderDataState from './Componetes/LoderDataState/LoderData.js';
 import CheckOut from './Componetes/CheckOut/CheckOut.jsx';
 import Register from './Componetes/Register/Register.jsx';
 import AuthContext from './Auth_Context/AuthContext.jsx';
+import PriveteRoaute from './Privete_Rounte/PriveteRoaute.jsx';
 
 const router = createBrowserRouter([
   {
@@ -41,7 +42,7 @@ const router = createBrowserRouter([
       },
       {
         path: 'checkout',
-        element: <CheckOut></CheckOut>
+        element: <PriveteRoaute><CheckOut></CheckOut></PriveteRoaute>
       },
       {
         path: 'register',

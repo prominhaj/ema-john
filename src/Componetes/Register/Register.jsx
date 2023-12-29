@@ -1,12 +1,13 @@
 import React, { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 import GoogleImg from '../../assets/images/google.svg';
 import toast from 'react-hot-toast';
 import { userContext } from '../../Auth_Context/AuthContext';
 
 const Register = () => {
     // Context
-    const {authSingUp, setUser, authGoogleHandle, authEmailVerification, user} = useContext(userContext);
+    const {authSingUp, authGoogleHandle, authEmailVerification, user} = useContext(userContext);
+    const navigate = useNavigate();
 
     // Toast
     const success = (success) => toast.success(success);
@@ -23,17 +24,18 @@ const Register = () => {
 
         // Password Check
         if(password.length < 6){
-            error('Password Min 6 Character')
+           return error('Password Min 6 Character')
         }
         else if(password !== confirm){
-            error('Password No Mass')
+          return error('Password No Mass')
         }
 
         // Email And Password Auth
         authSingUp(email, password)
         .then(result => {
             success('Register SuccessFull')
-            setUser(result.user)
+            form.reset();
+            navigate('/')
         })
         .catch(errors => {
             error(errors.message.substr(10))
@@ -43,6 +45,9 @@ const Register = () => {
         .then(() => {
             success('Email Verification Sent !')
         })
+        .catch(errors => {
+            error(errors.message)
+        })
     }
 
     // Google Auth Handle
@@ -50,7 +55,7 @@ const Register = () => {
         authGoogleHandle()
         .then(result => {
             success('Register SuccessFull')
-            setUser(result.user)
+            navigate('/')
         })
         .catch(errors => {
             error(errors.message.substr(10))

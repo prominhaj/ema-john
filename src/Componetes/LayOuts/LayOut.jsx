@@ -1,6 +1,7 @@
 import React from 'react';
 import Header from '../Header/Header';
 import { Outlet } from 'react-router-dom';
+import { Toaster } from 'react-hot-toast';
 
 const LayOut = () => {
     return (
@@ -9,6 +10,7 @@ const LayOut = () => {
             <div className='container mx-auto'>
                 <Outlet></Outlet>
             </div>
+            <Toaster />
         </div>
     );
 };

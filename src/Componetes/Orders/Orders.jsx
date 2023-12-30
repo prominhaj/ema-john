@@ -21,13 +21,13 @@ const Orders = () => {
     }
 
     return (
-        <div className='grid md:grid-cols-3 gap-40 my-20'>
-            <div className='col-span-2 flex flex-col gap-[25px]'>
+        <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 xl:gap-40 md:gap-x-10 gap-y-10 md:my-20 my-8'>
+            <div className='xl:col-span-2 flex flex-col gap-[25px]'>
                 {
                     product.map(product => <ReviewProduct key={product.id} product={product} delateProduct={delateProduct}></ReviewProduct>)
                 }
             </div>
-            <div className=' bg-[#FF99004D] h-[600px] rounded-lg sticky top-0'>
+            <div className='w-full pb-6 bg-[#FF99004D] rounded-lg sticky top-0'>
                 <Order productCart={product} clearCart={clearCart}>
                     <Link to="/checkout">
                         <button className='flex items-center gap-3 justify-center w-full h-12 bg-[#FF9900] rounded text-white mt-5'>Proceed Checkout

@@ -1,5 +1,5 @@
-import React, { useContext } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import React, { useContext, useState } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import GoogleImg from '../../assets/images/google.svg';
 import { userContext } from '../../Auth_Context/AuthContext';
 import toast from 'react-hot-toast';
@@ -7,10 +7,15 @@ import toast from 'react-hot-toast';
 const Login = () => {
     const {authSingIn, authGoogleHandle} = useContext(userContext);
     const navigate = useNavigate();
+    const [show, setShow] = useState(false);
 
     // Toast
     const success = (success) => toast.success(success);
     const error = (error) => toast.error(error);
+
+    // location
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/';
 
     // Handle Login
     const handleLogin = event => {
@@ -24,7 +29,7 @@ const Login = () => {
         .then(result => {
             success('SuccessFull Login')
             form.reset();
-            navigate('/')
+            navigate(from, {replace : true})
         })
         .catch(errors => {
             error(errors.message.substr(10))
@@ -36,7 +41,7 @@ const Login = () => {
         authGoogleHandle()
         .then(result => {
             success('Login SuccessFull')
-            navigate('/')
+            navigate(from, {replace : true})
         })
         .catch(errors => {
             error(errors.message.substr(10))
@@ -53,8 +58,12 @@ const Login = () => {
                         <label htmlFor='email' className="text-slate-700 text-[17px] font-normal font-['Lato'] tracking-tight">Email</label>
                         <input name='email' id='email' type='email' className="w-full text-xl py-2 px-3 mt-[9px] rounded-[5px] border border-gray-400 mb-[20px]" required />
                         <label htmlFor='password' className="text-slate-700 text-[17px] font-normal font-['Lato'] tracking-tight">Password</label>
-                        <input name='password' id='password' type='password' className="w-full text-xl py-2 px-3 mt-[9px] rounded-[5px] border border-gray-400" required />
-
+                        <input name='password' id='password' type={show ? 'text' : 'password'} className="w-full text-xl py-2 px-3 mt-[9px] rounded-[5px] border border-gray-400" required />
+                        <p onClick={() => setShow(!show)} className='mt-2'><small>
+                            {
+                                show ? <span>Hide Password</span> : <span>Show Password</span>
+                            }
+                            </small></p>
                         <button type='submit' className="w-full h-[55px] bg-amber-500 bg-opacity-30 rounded-[5px] text-neutral-900 text-[21px] font-normal font-['Lato'] tracking-tight mt-[44px] mb-[9px]">Login</button>
                     </form>
                     <div className="text-slate-700 text-center text-[15px] font-normal font-['Lato'] tracking-tight">

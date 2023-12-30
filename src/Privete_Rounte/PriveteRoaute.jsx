@@ -1,9 +1,10 @@
 import React, { useContext } from 'react';
 import { userContext } from '../Auth_Context/AuthContext';
-import { Navigate } from 'react-router-dom';
+import { Navigate, useLocation } from 'react-router-dom';
 
 const PriveteRoaute = ({ children }) => {
     const { user, loading } = useContext(userContext);
+    const location = useLocation();
 
     if(loading){
         return <button type="button" className="bg-indigo-500 flex text-white px-4 items-center py-1 rounded-md mx-auto my-6" disabled>
@@ -17,7 +18,7 @@ const PriveteRoaute = ({ children }) => {
     if(user){
         return children;
     }
-    return <Navigate to="/login" replace></Navigate>
+    return <Navigate to="/login" state={{from: location}} replace></Navigate>
 };
 
 export default PriveteRoaute;

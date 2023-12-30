@@ -34,7 +34,7 @@ const router = createBrowserRouter([
       },
       {
         path: 'inventory',
-        element: <Inventory></Inventory>
+        element: <PriveteRoaute><Inventory></Inventory></PriveteRoaute>
       },
       {
         path: 'login',

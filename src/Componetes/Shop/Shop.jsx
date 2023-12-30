@@ -61,7 +61,7 @@ const Shop = () => {
                 products.map(product => <Product key={product.id} card={product} addToCart={addToCart}></Product>)
             }
             </div>
-            <div className="w-[25rem] h-screen bg-[#FF99004D] fixed right-0">
+            <div className="md:w-[25rem] md:h-screen pb-6 rounded bg-[#FF99004D] fixed right-0">
                 <Order productCart={productCart} clearCart={clearCart}>
                     <Link to="/orders">
                         <button className='flex items-center gap-3 justify-center w-full h-12 bg-[#FF9900] rounded text-white mt-5'>Review Order

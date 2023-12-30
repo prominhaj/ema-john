@@ -15,11 +15,13 @@ const AuthContext = ({children}) => {
 
     // authSing Up
     const authSingUp = (email, password) => {
+        setLoading(true)
       return createUserWithEmailAndPassword(auth, email, password);
     }
 
     // Auth Sing In
     const authSingIn = (email, password) => {
+        setLoading(true)
        return signInWithEmailAndPassword(auth, email, password);
     }
 
@@ -30,6 +32,7 @@ const AuthContext = ({children}) => {
 
     // Google Auth
     const authGoogleHandle = () => {
+        setLoading(true)
        return signInWithPopup(auth, googleProvider);
     }
 

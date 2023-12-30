@@ -4,8 +4,8 @@ import TrashAlt from '../../assets/images/trash-alt.svg';
 const ReviewProduct = ({product, delateProduct}) => {
     const {img, name, price, quantity, id} = product;
     return (
-        <div className='h-[120px] p-[8px] rounded-lg border border-gray-400 flex items-start gap-5'>
-            <div className='h-full'>
+        <div className=' p-[8px] rounded-lg border border-gray-400 flex items-start gap-5'>
+            <div className='h-[120px]'>
                 <img className='h-full rounded-md' src={img} alt="" />
             </div>
             <div className='flex items-center justify-between w-full mr-6'>

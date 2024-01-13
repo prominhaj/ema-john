@@ -11,7 +11,7 @@ const Shop = () => {
     const [productCart, setProductCart] = useState([]);
 
     useEffect(()=>{
-        fetch('https://raw.githubusercontent.com/ProgrammingHero1/ema-john-resources/main/fakeData/products.json')
+        fetch('http://localhost:5000/products')
         .then(res => res.json())
         .then(data => setProducts(data))
     }, []);
@@ -20,7 +20,7 @@ const Shop = () => {
         const storedCart = getShoppingCart();
         const newArray = [];
         for(const id in storedCart){
-            const addedProduct = products.find(product => product.id === id);
+            const addedProduct = products.find(product => product._id === id);
 
             if(addedProduct){
                 const quantity = storedCart[id];
@@ -35,18 +35,18 @@ const Shop = () => {
     const addToCart = (card) =>{
         let newCart = [];
         // const newCard = [...productCart, card];
-        const exists = productCart.find(pd => pd.id === card.id);
+        const exists = productCart.find(pd => pd._id === card._id);
         if(!exists){
             card.quantity = 1;
             newCart = [...productCart, card];
         }
         else{
             exists.quantity = exists.quantity + 1;
-            const remaining = productCart.filter(pd => pd.id !== card.id);
+            const remaining = productCart.filter(pd => pd._id !== card._id);
             newCart = [...remaining, exists];
         }
         setProductCart(newCart);
-        addToDb(card.id);
+        addToDb(card._id);
     }
 
     const clearCart = ()=>{
@@ -58,7 +58,7 @@ const Shop = () => {
         <div className="container mx-auto flex">
             <div className="grid xl:grid-cols-3 lg:grid-cols-2  grid-cols-1 gap-10 py-10">
             {
-                products.map(product => <Product key={product.id} card={product} addToCart={addToCart}></Product>)
+                products.map(product => <Product key={product._id} card={product} addToCart={addToCart}></Product>)
             }
             </div>
             <div className="md:w-[25rem] md:h-screen pb-6 rounded bg-[#FF99004D] fixed right-0">

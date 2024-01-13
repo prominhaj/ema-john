@@ -10,7 +10,7 @@ const Orders = () => {
     const [product, setProduct] = useState(data);
 
     const delateProduct = (id) =>{
-        const remeaning = product.filter(pd => pd.id !== id);
+        const remeaning = product.filter(pd => pd._id !== id);
         setProduct(remeaning);
         removeFromDb(id);
     }
@@ -24,7 +24,7 @@ const Orders = () => {
         <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 xl:gap-40 md:gap-x-10 gap-y-10 md:my-20 my-8'>
             <div className='xl:col-span-2 flex flex-col gap-[25px]'>
                 {
-                    product.map(product => <ReviewProduct key={product.id} product={product} delateProduct={delateProduct}></ReviewProduct>)
+                    product.map(product => <ReviewProduct key={product._id} product={product} delateProduct={delateProduct}></ReviewProduct>)
                 }
             </div>
             <div className='w-full pb-6 bg-[#FF99004D] rounded-lg sticky top-0'>
